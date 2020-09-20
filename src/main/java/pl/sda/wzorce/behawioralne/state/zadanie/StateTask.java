@@ -7,7 +7,6 @@ package pl.sda.wzorce.behawioralne.state.zadanie;
 // - drunk
 // zaprezentuj zmiennosc dzialania walk and talk po zmianie stanu
 
-
 interface Person {
 
   void drink();
@@ -79,11 +78,83 @@ class PersonBahveStateDrunk implements PersonBehavState {
 
   @Override
   public void talk() {
-    System.out.println("pij nie gadaj");
+    System.out.println("Pij nie gadaj");
   }
 }
 
+class USiebie implements Person {
+  PersonState state = PersonState.SOBER;
 
+  @Override
+  public void drink() {
+    if (state.equals(PersonState.SOBER)) {
+      System.out.println("Chłopaki dzisiaj nie pije");
+    }
+    if (state.equals(PersonState.DRUNK)) {
+      System.out.println("Polewaj");
+      state = PersonState.DRUNK;
+    }
+  }
+
+  @Override
+  public void soberup() {
+    if (state.equals(PersonState.DRUNK)) {
+      System.out.println("Musze wytrzezwiec");
+    }
+  }
+
+  @Override
+  public void walk() {
+    if (state.equals(PersonState.DRUNK)) {
+      System.out.println("Losujemy kto idzie po alko");
+    } else {
+      System.out.println(" Moge isc cos wam kupic");
+
+    }
+  }
+
+  @Override
+  public void talk() {
+    if (state.equals(PersonState.DRUNK)) {
+      System.out.println("No hey piekna co tam");
+    } else {
+      System.out.println("Dzien dobry, jestm Patryk");
+    }
+  }
+
+  @Override
+  public void setState(PersonState sober) {
+
+  }
+}
+
+class NaMiescie implements Person {
+
+  @Override
+  public void drink() {
+
+  }
+
+  @Override
+  public void soberup() {
+
+  }
+
+  @Override
+  public void walk() {
+
+  }
+
+  @Override
+  public void talk() {
+
+  }
+
+  @Override
+  public void setState(PersonState sober) {
+
+  }
+}
 
 class StateTask {
   public static void main(String[] args) {}
