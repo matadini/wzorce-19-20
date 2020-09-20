@@ -1,10 +1,5 @@
 package pl.sda.wzorce.behawioralne.observer;
 
-import lombok.RequiredArgsConstructor;
-
-import java.util.ArrayList;
-import java.util.List;
-
 public class ObserverApp {
 
     public static void main(String[] args) {

@@ -1,6 +1,8 @@
 package pl.sda.wzorce.konstrukcyjne.builder;
 
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.ToString;
 
 @ToString
 @Data

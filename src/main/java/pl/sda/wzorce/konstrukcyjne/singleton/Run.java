@@ -1,9 +1,5 @@
 package pl.sda.wzorce.konstrukcyjne.singleton;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.ToString;
-
 
 // napisz klase LoggedUser zawierajaca pola Ex1
 // nazwe uzytkownika
@@ -13,7 +9,6 @@ import lombok.ToString;
 
 // napisz klase przechowujaca dane do bazy danych, pola adres, port, login, password E2
 // zaimplementuj singleton bezpieczny wielowatkowo w trybie lazy wewnatrz klasy przechowujacej dane
-
 
 
 public class Run {

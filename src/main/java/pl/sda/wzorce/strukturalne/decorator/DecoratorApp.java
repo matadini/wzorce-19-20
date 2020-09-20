@@ -1,7 +1,5 @@
 package pl.sda.wzorce.strukturalne.decorator;
 
-import lombok.RequiredArgsConstructor;
-
 import java.util.Scanner;
 
 

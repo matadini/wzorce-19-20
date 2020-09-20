@@ -1,7 +1,5 @@
 package pl.sda.wzorce.strukturalne.facade;
 
-import lombok.RequiredArgsConstructor;
-
 // fasada
 // majac do dyspozycji klasy serwisowe
 class ReportService {
