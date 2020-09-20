@@ -5,6 +5,7 @@ package pl.sda.wzorce.strukturalne.proxy.zadanie.security;
 interface AlcoholShop {
     void buy(int money);
 }
+
 class AlcoholShopNaRogu implements AlcoholShop {
 
     @Override
@@ -12,6 +13,7 @@ class AlcoholShopNaRogu implements AlcoholShop {
         System.out.println("Kupuje alkohol za: " + money);
     }
 }
+
 class Person {
     String name;
     int age;
