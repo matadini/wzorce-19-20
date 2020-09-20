@@ -109,7 +109,6 @@ class USiebie implements Person {
       System.out.println("Losujemy kto idzie po alko");
     } else {
       System.out.println(" Moge isc cos wam kupic");
-
     }
   }
 
@@ -123,37 +122,25 @@ class USiebie implements Person {
   }
 
   @Override
-  public void setState(PersonState sober) {
-
-  }
+  public void setState(PersonState sober) {}
 }
 
 class NaMiescie implements Person {
 
   @Override
-  public void drink() {
-
-  }
+  public void drink() {}
 
   @Override
-  public void soberup() {
-
-  }
+  public void soberup() {}
 
   @Override
-  public void walk() {
-
-  }
+  public void walk() {}
 
   @Override
-  public void talk() {
-
-  }
+  public void talk() {}
 
   @Override
-  public void setState(PersonState sober) {
-
-  }
+  public void setState(PersonState sober) {}
 }
 
 class StateTask {
