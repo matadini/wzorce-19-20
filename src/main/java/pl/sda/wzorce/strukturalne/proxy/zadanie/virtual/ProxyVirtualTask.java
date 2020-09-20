@@ -24,4 +24,7 @@ package pl.sda.wzorce.strukturalne.proxy.zadanie.virtual;
 
 class ProxyVirtualTask {
 
+
+
+
 }
