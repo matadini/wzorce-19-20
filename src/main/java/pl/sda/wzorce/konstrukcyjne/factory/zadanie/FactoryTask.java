@@ -11,6 +11,55 @@ package pl.sda.wzorce.konstrukcyjne.factory.zadanie;
 // porownaj przyklad z tym z zajec i zastanow sie czy poziom hermatyzacji kodu wzrosl czy zmalal?
 // wykorzystaj fabryki do utworzenia i "prowadzenia" samochodow audi i vw.
 
+import lombok.AllArgsConstructor;
 
 public class FactoryTask {
+    public static void main(String[] args) {
+        Car car = new CarFactoryAudi().create();
+        car.drive();
+        Car car1 = new CarFactoryBmw().create();
+        car1.drive();
+    }
+}
+
+interface Car {
+    void drive();
+}
+
+interface CarFactory {
+    Car create();
+}
+
+class CarBmw implements Car {
+    String name = "Bmw";
+
+    @Override
+    public void drive() {
+        System.out.println("jedzie " + name);
+    }
+}
+
+class CarAudi implements Car {
+    String name = "Audi";
+
+    @Override
+    public void drive() {
+        System.out.println("jedzie " + name);
+    }
+}
+
+class CarFactoryAudi implements CarFactory {
+
+    @Override
+    public Car create() {
+        return new CarAudi();
+    }
+}
+
+class CarFactoryBmw implements CarFactory {
+
+    @Override
+    public Car create() {
+        return new CarBmw();
+    }
 }
