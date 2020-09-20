@@ -12,5 +12,37 @@ package pl.sda.wzorce.konstrukcyjne.factory.zadanie;
 // wykorzystaj fabryki do utworzenia i "prowadzenia" samochodow audi i vw.
 
 
+import lombok.ToString;
+
+interface Car {
+    void drive();
+}
+
+interface CarFactory {
+   Car create();
+}
+
+@ToString
+class CarAudi implements Car {
+    @Override
+    public void drive() {
+        System.out.println("Jedzie Audi");
+    }
+}
+
+class CarFactoryAudi implements CarFactory {
+    @Override
+    public Car create() {
+        return new CarAudi();
+    }
+}
+
+//hermetyzacja rośnie bo ukrywamy klasy
 public class FactoryTask {
+    public static void main(String[] args) {
+        CarFactory audiFactory = new CarFactoryAudi();
+        Car audi = audiFactory.create();
+        audi.drive();
+    }
+
 }

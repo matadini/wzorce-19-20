@@ -1,6 +1,6 @@
 package pl.sda.wzorce.behawioralne.stategy.zadanie;
 
-// utworz klase Context a metodamy setStrategy(Strategy strategia) i metoda draw();
+// utworz klase Context z metodami setStrategy(Strategy strategia) i metoda draw();
 // ktora przechowuje pole PaintingStrategy, metoda draw bedzie delegowala do metody drawLikeMaster
 // utworz interfejs PaintingStrategy z metoda drawLikeMaster();
 // zaimplementuj interfejs context w klasie np. PainterContext
@@ -10,8 +10,59 @@ package pl.sda.wzorce.behawioralne.stategy.zadanie;
 // ponownie zmien strategie dla kontekstu i wykonaj metode draw
 // zaobserwuj jak zmienia sie zachowanie metody draw(); czy widzisz podobniestwo z wzorcem state?
 
+
+interface Context {
+    void draw();
+    void setStrategy(PaintingStrategy strategia);
+}
+
+//sposób malowania
+interface PaintingStrategy {
+    void drawLikeMaster();
+}
+
+class PaintingStrategyWatercolors implements PaintingStrategy{
+    @Override
+    public void drawLikeMaster() {
+        System.out.println("Maluje akwarelami");
+    }
+}
+
+class PaintingStrategyOil implements PaintingStrategy{
+    @Override
+    public void drawLikeMaster() {
+        System.out.println("Maluje farbami olejnymi");
+    }
+}
+
+class PaintingStrategyPoster implements PaintingStrategy{
+    @Override
+    public void drawLikeMaster() {
+        System.out.println("Maluje farbami plakatowymi");
+    }
+}
+
+
+class PainterContext implements Context {
+    private PaintingStrategy paintingStrategy;
+
+    @Override
+    public void draw() {
+        paintingStrategy.drawLikeMaster();
+    }
+
+    @Override
+    public void setStrategy(PaintingStrategy strategy) {
+       this.paintingStrategy = strategy;
+    }
+}
+
 public class StrategyTask {
     public static void main(String[] args) {
-
+        Context malarzMistrz = new PainterContext();
+        malarzMistrz.setStrategy(new PaintingStrategyOil());
+        malarzMistrz.draw();
+        malarzMistrz.setStrategy(new PaintingStrategyPoster());
+        malarzMistrz.draw();
     }
 }

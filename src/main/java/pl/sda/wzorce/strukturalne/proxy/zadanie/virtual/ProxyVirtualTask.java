@@ -22,6 +22,53 @@ package pl.sda.wzorce.strukturalne.proxy.zadanie.virtual;
 //        }
 //    }
 
+import lombok.RequiredArgsConstructor;
+
+interface Terminator {
+    void shot();
+
+    void fight();
+}
+
+class TerminatorExpensive implements Terminator{
+    @Override
+    public void shot() {
+        System.out.println("Terminator wypasiony strzela");
+    }
+    @Override
+    public void fight() {
+        System.out.println("Terminator wypasiony walczy");
+    }
+}
+
+@RequiredArgsConstructor
+class TerminatorProxyExpensive implements Terminator {
+    static Terminator terminator;
+
+    @Override
+    public void shot() {
+        if (terminator == null) {
+            terminator = new TerminatorExpensive();
+        }
+        terminator.shot();
+    }
+
+    @Override
+    public void fight() {
+        if (terminator == null) {
+            terminator = new TerminatorExpensive();
+        }
+        terminator.fight();
+    }
+
+}
+
+
 class ProxyVirtualTask {
+    public static void main(String[] args) {
+        Terminator terminator = new TerminatorProxyExpensive();
+        terminator.shot();
+        terminator.fight();
+    }
 
 }
