@@ -41,8 +41,7 @@ class PhoneBehaveStateOn implements PhoneBehavState {
         System.out.println("jestem wlaczony mozesz sms");
     }
     @Override
-    public void sendSms() {
-    }
+    public void sendSms() { }
     @Override
     public void turnOn() {
         System.out.println("jestem juz wlaczony");

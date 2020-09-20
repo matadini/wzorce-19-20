@@ -37,7 +37,6 @@ class InternalBuilder {
 
 }
 
-
 class PersonBuilderFluent {
     String name = "niepodano";
     String surname = "niepodano";

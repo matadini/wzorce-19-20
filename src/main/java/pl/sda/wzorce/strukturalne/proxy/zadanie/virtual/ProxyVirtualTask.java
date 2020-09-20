@@ -48,6 +48,13 @@ class TermoiantorProxyExpensive implements Terminator {
     private final String user;
     private static Terminator terminator;
 
+    public static Terminator getTerminator(){
+        if(terminator == null){
+            terminator = new TerminatorExpensive();
+        }
+        return terminator;
+    }
+
     @Override
     public void shot() {
         if (user.equals("janek")) {
@@ -69,7 +76,7 @@ class TermoiantorProxyExpensive implements Terminator {
 
 class ProxyVirtualTask {
     public static void main(String[] args) {
-        Terminator terminator = new TerminatorExpensive();
+        Terminator terminator = TermoiantorProxyExpensive.getTerminator();
 
         Terminator terminatorOlka = new TermoiantorProxyExpensive("olek");
         terminatorOlka.fight();
