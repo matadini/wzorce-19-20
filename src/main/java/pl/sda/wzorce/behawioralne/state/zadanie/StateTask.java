@@ -62,7 +62,7 @@ class Janusz implements Person{
         if(PersonState.SOBER.equals(personState))
             personBehavState = new PersonBehavStateSoberb(this);
         if(PersonState.DRUNK.equals(personState))
-            personBehavState = new PersonBehavStateSoberb(this);
+            personBehavState = new PersonBehavStateDrunk(this);
     }
 }
 
@@ -88,7 +88,7 @@ class PersonBehavStateSoberb implements PersonBehavState{
 
     @Override
     public void talk() {
-    System.out.println("Mówie eyrażnie");
+    System.out.println("Mówie wyrażnie");
     }
 }
 
@@ -122,6 +122,13 @@ class PersonBehavStateDrunk implements PersonBehavState{
 public class StateTask {
   public static void main(String[] args) {
     Person janusz = new Janusz();
+    janusz.soberup();
+    janusz.talk();
+    janusz.drink();
+    janusz.talk();
+    janusz.walk();
+      janusz.drink();
+    janusz.soberup();
 
   }
 }
