@@ -26,52 +26,52 @@ import lombok.AllArgsConstructor;
 
 class ProxyVirtualTask {
 
+  public static void main(String[] args) {
+    Terminator terminator = new TerminatorProxyExpensive();
+    terminator.shot();
+    terminator.fight();
+  }
 }
 
-interface Terminator{
-    void shot();
-    void fight();
+interface Terminator {
+  void shot();
+
+  void fight();
 }
 
-class TerminatorExpensive implements Terminator{
+class TerminatorExpensive implements Terminator {
 
-    TerminatorProxyExpensive terminatorProxyExpensive;
+  @Override
+  public void shot() {
 
+    System.out.println("strzelam z drogiej broni");
+  }
 
-    @Override
-    public void shot() { terminatorProxyExpensive.shot();
-    System.out.println("strzelam");
-    }
+  @Override
+  public void fight() {
 
-    @Override
-    public void fight() {
-        System.out.println("Walcze");
-    }
+    System.out.println("Walcze japonska katana");
+  }
 }
+
 @AllArgsConstructor
-class TerminatorProxyExpensive implements Terminator{
+class TerminatorProxyExpensive implements Terminator {
 
-    static Terminator terminator;
+  static Terminator terminator;
 
-    @Override
-    public void shot() {
-        SingletonTerminator.getInstant(terminator);
+  @Override
+  public void shot() {
+    if (terminator == null) {
+      terminator = new TerminatorExpensive();
     }
+    terminator.shot();
+  }
 
-    @Override
-    public void fight() {
-
+  @Override
+  public void fight() {
+    if (terminator == null) {
+      terminator = new TerminatorExpensive();
     }
-}
-@AllArgsConstructor
-class SingletonTerminator{
-
-
-    public static synchronized Terminator getInstant(Terminator terminator){
-        if(terminator==null){
-            return new TerminatorExpensive();
-        }
-        return terminator;
-    }
-
+    terminator.fight();
+  }
 }
