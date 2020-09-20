@@ -37,6 +37,7 @@ class CarFactoryAudi implements CarFactory {
     }
 }
 
+//hermetyzacja rośnie bo ukrywamy klasy
 public class FactoryTask {
     public static void main(String[] args) {
         CarFactory audiFactory = new CarFactoryAudi();
