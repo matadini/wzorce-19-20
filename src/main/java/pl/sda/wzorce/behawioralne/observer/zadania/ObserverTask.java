@@ -17,39 +17,39 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ObserverTask {
-  public static void main(String[] args) {
-      Janusz janusz = new Janusz("Janusz");
-      Marysia marysia = new Marysia("Marysia");
-      Zygmunt zygmunt = new Zygmunt("Zygmunt");
+    public static void main(String[] args) {
+        Janusz janusz = new Janusz("Janusz");
+        Marysia marysia = new Marysia("Marysia");
+        Zygmunt zygmunt = new Zygmunt("Zygmunt");
 
-      Producer radio = ProducerFactory.create();
-      radio.subscribe(janusz);
-      radio.subscribe(marysia);
-      radio.subscribe(zygmunt);
+        Producer radio = ProducerFactory.create();
+        radio.subscribe(janusz);
+        radio.subscribe(marysia);
+        radio.subscribe(zygmunt);
 
-      radio.granieNaZadanie("Kolorowe jarmarki");
-      radio.granieNaZadanie("Radio song");
-  }
+        radio.granieNaZadanie("Kolorowe jarmarki");
+        radio.granieNaZadanie("Radio song");
+    }
 }
 
 interface Producer {
-  void granieNaZadanie(String song);
-  void subscribe(Subsciber subsciber);
+    void granieNaZadanie(String song);
+    void subscribe(Subsciber subsciber);
 
 }
 
 interface Subsciber {
-  void update(String song);
+    void update(String song);
 }
 
 class Radio implements Producer {
 
-  private final List<Subsciber> subsciberList = new ArrayList<>();
+    private final List<Subsciber> subsciberList = new ArrayList<>();
 
-  @Override
-  public void granieNaZadanie(String song) {
-    subsciberList.forEach(s -> s.update(song));
-  }
+    @Override
+    public void granieNaZadanie(String song) {
+        subsciberList.forEach(s -> s.update(song));
+    }
 
     @Override
     public void subscribe(Subsciber subsciber) {
@@ -65,7 +65,7 @@ class Janusz implements Subsciber{
 
     @Override
     public void update(String song) {
-    System.out.println(name + " słucha piosenki o nazwie " + song);
+        System.out.println(name + " słucha piosenki o nazwie " + song);
     }
 }
 @AllArgsConstructor
