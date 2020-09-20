@@ -8,9 +8,8 @@ package pl.sda.wzorce.konstrukcyjne.prototype.zadanie;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 
-import java.lang.reflect.Type;
 
-enum Breed implements Type {
+enum Breed {
      SHEEPDOG, BULLDOG, POODLE
 }
 
@@ -18,7 +17,7 @@ enum Breed implements Type {
 @AllArgsConstructor
 class Dog implements Cloneable{
     String name;
-    Type type;
+    Breed type;
     Integer age;
 
     Dog createClone() throws CloneNotSupportedException {
@@ -37,7 +36,6 @@ public class PrototypeTask {
         Dog fifi = alex.createClone();
         fifi.setName("Fifi");
         fifi.setType(Breed.BULLDOG);
-        fifi.setAge(7);
 
         System.out.println(alex);
         System.out.println(fifi);

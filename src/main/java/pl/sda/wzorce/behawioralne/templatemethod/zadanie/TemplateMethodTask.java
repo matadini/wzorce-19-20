@@ -67,9 +67,9 @@ public class TemplateMethodTask {
         Dance taniecPolski  = new TaniecPolski();
         Dance taniecCzeski = new TaniecCzeski();
 
-        System.out.println("Taniec Polski");
+        System.out.println("Taniec Polski: ");
         taniecPolski.dance();
-        System.out.println("Taniec Czeski");
+        System.out.println("\nTaniec Czeski: ");
         taniecCzeski.dance();
     }
 }
