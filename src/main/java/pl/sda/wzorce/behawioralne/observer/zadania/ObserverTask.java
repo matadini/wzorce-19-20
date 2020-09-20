@@ -11,8 +11,88 @@ package pl.sda.wzorce.behawioralne.observer.zadania;
 // 5. ukryj klasy implementujace producenta i subskrybenta za pomoca wzorca: FactoryMethod
 // aby w metodzie main() korzystac tylko z interfejsow bez wspominania o klasach
 
-public class ObserverTask {
-    public static void main(String[] args) {
+import lombok.AllArgsConstructor;
 
+import java.util.ArrayList;
+import java.util.List;
+
+public class ObserverTask {
+  public static void main(String[] args) {
+      Janusz janusz = new Janusz("Janusz");
+      Marysia marysia = new Marysia("Marysia");
+      Zygmunt zygmunt = new Zygmunt("Zygmunt");
+
+      Producer radio = ProducerFactory.create();
+      radio.subscribe(janusz);
+      radio.subscribe(marysia);
+      radio.subscribe(zygmunt);
+
+      radio.granieNaZadanie("Kolorowe jarmarki");
+      radio.granieNaZadanie("Radio song");
+  }
+}
+
+interface Producer {
+  void granieNaZadanie(String song);
+  void subscribe(Subsciber subsciber);
+
+}
+
+interface Subsciber {
+  void update(String song);
+}
+
+class Radio implements Producer {
+
+  private final List<Subsciber> subsciberList = new ArrayList<>();
+
+  @Override
+  public void granieNaZadanie(String song) {
+    subsciberList.forEach(s -> s.update(song));
+  }
+
+    @Override
+    public void subscribe(Subsciber subsciber) {
+        subsciberList.add(subsciber);
+    }
+
+
+}
+@AllArgsConstructor
+class Janusz implements Subsciber{
+
+    String name;
+
+    @Override
+    public void update(String song) {
+    System.out.println(name + " słucha piosenki o nazwie " + song);
     }
 }
+@AllArgsConstructor
+class Marysia implements Subsciber{
+
+    String name;
+
+    @Override
+    public void update(String song) {
+        System.out.println(name + " słucha piosenki o nazwie " + song);
+    }
+}
+@AllArgsConstructor
+class Zygmunt implements Subsciber{
+
+    String name;
+
+    @Override
+    public void update(String song) {
+        System.out.println(name + " słucha piosenki o nazwie " + song);
+    }
+}
+
+class ProducerFactory{
+    static Producer create(){
+        return new Radio();
+    }
+}
+
+
