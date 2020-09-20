@@ -17,6 +17,8 @@ public class FactoryTask {
     public static void main(String[] args) {
         Car car = new CarFactoryAudi().create();
         car.drive();
+        Car car1 = new CarFactoryBmw().create();
+        car1.drive();
     }
 }
 
@@ -26,6 +28,15 @@ interface Car {
 
 interface CarFactory {
     Car create();
+}
+
+class CarBmw implements Car {
+    String name = "Bmw";
+
+    @Override
+    public void drive() {
+        System.out.println("jedzie " + name);
+    }
 }
 
 class CarAudi implements Car {
@@ -39,9 +50,16 @@ class CarAudi implements Car {
 
 class CarFactoryAudi implements CarFactory {
 
-
     @Override
     public Car create() {
         return new CarAudi();
+    }
+}
+
+class CarFactoryBmw implements CarFactory {
+
+    @Override
+    public Car create() {
+        return new CarBmw();
     }
 }
